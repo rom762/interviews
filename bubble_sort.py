@@ -9,20 +9,22 @@ def bubble_sort(a):
 
     ps чтобы не проходить по уже отсортированным
     вычитаем номер прохода во внутреннем цикле
+
+    pps если перестановок в каком то проходе не было - значит уже отсортирован
     :param mylist:
-    :return:
+    :return:list
     """
-    count = 0
+    swapped = False
     for run in range(len(a)-1):
         for i in range(len(a)-1-run):
-            count += 1
             if a[i] > a[i+1]:
                 a[i], a[i+1] = a[i+1], a[i]
-
-        print(a)
-        print(count)
+                swapped = True
+        # если ни одной перестановки не было - значит он уже отсортирован
+        if not swapped:
+            break
     return a
 
 
-mylist = [5, 7, 4, 3, 8, 2]
-print(bubble_sort(mylist))
+a = [5, 7, 4, 3, 8, 2]
+print(bubble_sort(a))
